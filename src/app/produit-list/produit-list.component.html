@@ -1,0 +1,45 @@
+<nz-input-group nzSearch [nzAddOnAfter]="suffixIconButton">
+  <input type="text" [(ngModel)]="nom" nz-input placeholder="Chercher un médicament" />
+</nz-input-group>
+<ng-template #suffixIconButton>
+  <button nz-button nzType="primary" nzSearch (click)="search()"><i nz-icon nzType="search"></i></button>
+</ng-template><br />
+<br />
+
+<nz-table 
+#Produits
+ nzShowSizeChanger
+ [nzData]="produits"
+ [nzScroll]="{ y: '450px' }"
+>
+  <thead>
+    <tr>
+      <th nzWidth="20%">Nom</th>
+      <th nzWidth="50%">Description</th>
+      <th nzWidth="10%">Prix</th>
+      <th nzWidth="20%"></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let produit of Produits.data">
+      <td>{{ produit.nom }}</td>
+      <td>{{ produit.dci }}</td>
+      <td>{{ produit.ppv }} Dh</td>
+      <td><button nz-button nzType="primary" (click)="showModal()"><i nz-icon nzType="plus"></i>Réserver</button></td>
+    </tr>
+  </tbody> 
+</nz-table>
+
+    
+    <nz-modal *ngFor="let produit of produits" [(nzVisible)]="isVisible" nzTitle="Détails" (nzOnCancel)="handleCancel()" (nzOnOk)="handleOk()">
+      <ng-container *nzModalContent>
+        <p>Code: {{ produit.code }}</p>
+        <p>Nom: {{ produit.nom }}</p>
+        <p>{{ produit.presentation }}</p>
+        <p>Dosage: {{ produit.dosage }} {{ produit.unite_dosage }}</p>
+        <p>Form: {{ produit.form }}</p>
+        <p>Princips ou Générique: {{ produit.princips_generique }}</p>
+        <p>Prix public de Vente (PPV) : {{ produit.ppv }} Dh</p>
+        <p>Prix Hôpital (PH): {{ produit.ph }} Dh</p>
+      </ng-container>
+    </nz-modal>

@@ -1,0 +1,59 @@
+<nz-page-header
+      class="site-page-header"
+      (nzBack)="onBack()"
+      nzBackIcon
+      nzTitle="Modifier votre Pharmacie"
+      nzSubtitle={{pharmacie.libelle}}
+    >
+</nz-page-header>   
+      
+<form nz-form (ngSubmit)="submitForm()">          
+    <nz-form-item>    
+        <nz-form-label [nzSpan]="2">ICE</nz-form-label>
+        <nz-form-control nzHasFeedback [nzSpan]="22" nzErrorTip="">
+            <input nz-input id = "ice" [(ngModel)] = "pharmacie.ice" name = "ice"/>  
+        </nz-form-control>
+    </nz-form-item>
+            
+    <nz-form-item> 
+        <nz-form-label [nzSpan]="2">Libelle</nz-form-label>
+        <nz-form-control nzHasFeedback [nzSpan]="22" nzErrorTip="">
+            <input nz-input id = "libelle" [(ngModel)] = "pharmacie.libelle" name = "libelle">
+        </nz-form-control>
+    </nz-form-item>
+            
+    <nz-form-item> 
+        <nz-form-label [nzSpan]="2">Email</nz-form-label>
+        <nz-form-control nzHasFeedback [nzSpan]="22" nzErrorTip="">
+            <input nz-input id = "email" [(ngModel)] = "pharmacie.email" name = "email">
+        </nz-form-control>
+    </nz-form-item>
+
+    <nz-form-item> 
+        <nz-form-label [nzSpan]="2">Tel.</nz-form-label>
+        <nz-form-control nzHasFeedback [nzSpan]="22" nzErrorTip="">
+            <input nz-input id = "telephone" [(ngModel)] = "pharmacie.telephone" name = "telephone">
+        </nz-form-control>
+    </nz-form-item>
+
+    <nz-form-item> 
+        <nz-form-label [nzSpan]="2">Adresse</nz-form-label>
+        <nz-form-control nzHasFeedback [nzSpan]="22" nzErrorTip="">
+            <input nz-input id = "adresse" [(ngModel)] = "pharmacie.adresse" name = "adresse">
+        </nz-form-control>
+    </nz-form-item>
+            
+    <nz-form-item> 
+        <nz-form-label [nzSpan]="2">Ville</nz-form-label>
+        <nz-form-control nzHasFeedback [nzSpan]="22" nzErrorTip="">
+            <input nz-input id = "ville" [(ngModel)] = "pharmacie.ville" name = "ville">
+        </nz-form-control>
+    </nz-form-item>
+    <nz-form-item>
+        <nz-form-control [nzOffset]="18" [nzSpan]="6">
+            <button nz-button nzType="primary" nzBlock >Mettre à jour</button>
+        </nz-form-control>
+    </nz-form-item>
+</form>
+        
+            
