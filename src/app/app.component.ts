@@ -23,6 +23,7 @@ export class AppComponent {
   UpdateUser(){
     this.router.navigate(['update-user']);
   }
+
 }
 
 

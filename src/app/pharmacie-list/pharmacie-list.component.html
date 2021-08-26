@@ -23,9 +23,21 @@
             <td>{{ pharmacie.adresse }}</td>
             <td>{{ pharmacie.ville }}</td>
             <td>
-                <button nz-button nzType="default" nzShape="circle" (click) = "pharmacieDetails(pharmacie.ice)"><i nz-icon nzType="eye" nzTheme="twotone"></i></button>
+                <button nz-button nzGhost nzType="default" nzShape="circle" (click) = "pharmacieDetails(pharmacie.ice)"><i nz-icon nzType="eye" nzTheme="twotone"></i></button>
                 <button nz-button nzType="default" nzShape="circle" (click) = "updatePharmacie(pharmacie.ice)" style="margin-left: 10px"><i nz-icon nzType="setting" nzTheme="twotone"></i></button>
-                <button nz-button nzDanger nzShape="circle" (click) = "deletePharmacie(pharmacie.ice)" style="margin-left: 10px"> <i nz-icon nzType="delete" nzTheme="fill"></i></button>
+                <button
+                nz-button
+                nzDanger
+                nzShape="circle"
+                style="margin-left: 10px"
+                    nz-popconfirm
+                    nzPopconfirmTitle="Êtes-vous sûr de supprimer cette pharmacie ?"
+                    nzPopconfirmPlacement="bottom"
+                    (nzOnConfirm)="confirm(pharmacie.ice)"
+                    (nzOnCancel)="cancel()"
+                    >
+                    <i nz-icon nzType="delete" nzTheme="fill"></i>
+                </button>
             </td>
         </tr>
     </tbody>

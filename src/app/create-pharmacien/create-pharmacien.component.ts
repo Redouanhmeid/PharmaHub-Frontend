@@ -63,9 +63,6 @@ export class CreatePharmacienComponent implements OnInit {
       agree: [false]
     });
   }
-  onBack(): void {
-    this.router.navigate(['pharmacies']);
-  }
   savePharmacien(){
     this.pharmacienService.createPharmacie(this.pharmacien).subscribe( data =>{
       console.log(data);
@@ -76,7 +73,4 @@ export class CreatePharmacienComponent implements OnInit {
   goToPharmacienList(){
     this.router.navigate(['/pharmaciens']);
   }
-
-  
-
 }

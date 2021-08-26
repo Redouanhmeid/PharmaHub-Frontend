@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { NzMessageService } from 'ng-zorro-antd/message';
 import { Pharmacie } from '../pharmacie';
 import { PharmacieService } from '../pharmacie.service';
 
@@ -12,7 +13,8 @@ export class PharmacieListComponent implements OnInit {
   pharmacies: Pharmacie[] = [];
   libelle: string;
   constructor(private pharmacieService: PharmacieService,
-    private router: Router) { }
+    private router: Router,
+    private nzMessageService: NzMessageService) { }
 
   ngOnInit(): void {
     this.getPharmacies();
@@ -45,5 +47,14 @@ export class PharmacieListComponent implements OnInit {
     }else  if(this.libelle == ""){
       this.ngOnInit();
     }
+  }
+  cancel(): void {
+    this.nzMessageService.info('c\'est annulé');
+  }
+
+  confirm(ice: number): void {
+    this.pharmacieService.deletePharmacie(ice).subscribe( data => {
+      this.getPharmacies();
+    })
   }
 }

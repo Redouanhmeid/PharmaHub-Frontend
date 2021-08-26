@@ -1,1 +1,46 @@
-lol
+<div class="slider-container">
+    
+
+  <div class="gutter-example">
+    <div nz-row [nzGutter]="[16, 16]">
+      <div nz-col class="gutter-row" [nzSpan]="24">
+            <div class="grid-config">
+            </div>
+      </div>
+
+      <div nz-col class="gutter-row" [nzSpan]="6">
+            <div class="grid-config">Column</div>
+      </div>
+      <div nz-col class="gutter-row" [nzSpan]="6">
+            <div class="grid-config">Column</div>
+      </div>
+      <div nz-col class="gutter-row" [nzSpan]="6">
+            <div class="grid-config">Column</div>
+      </div>
+      <div nz-col class="gutter-row" [nzSpan]="6">
+            <div class="grid-config">Column</div>
+      </div>
+
+      <div nz-col class="gutter-row" [nzSpan]="12">
+        <div class="grid-config">
+            <nz-card nzTitle="Card title" [nzExtra]="extraTemplate">
+                <p>Card content</p>
+                <p>Card content</p>
+                <p>Card content</p>
+              </nz-card>
+              <ng-template #extraTemplate>
+                <a>Voire plus</a>
+              </ng-template>
+        </div>
+      </div>
+      <div nz-col class="gutter-row" [nzSpan]="12">
+        <div class="grid-config">Column</div>
+      </div>
+      <div nz-col class="gutter-row" [nzSpan]="12">
+        <div class="grid-config">Column</div>
+      </div>
+      <div nz-col class="gutter-row" [nzSpan]="12">
+        <div class="grid-config">Column</div>
+      </div>
+    </div>
+  </div>

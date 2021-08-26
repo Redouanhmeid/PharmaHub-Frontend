@@ -1,7 +1,7 @@
 <nz-layout>
   <nz-sider nzCollapsible nzWidth="250px">
     <div class="sidebar-logo">
-      <a href="/welcome">
+      <a href="/dashboard">
         <img src="..\assets\images\logo.svg" alt="logo">
         <h1>PharmaHub</h1>
       </a>
@@ -27,10 +27,32 @@
     </ul>
   </nz-sider>
   <nz-layout>
+    
     <nz-header>
-      <button class="notification" nz-button nzDanger nzShape="circle" (click)="Newnotification('success')"><i nz-icon nzType="bell" nzTheme="fill"></i></button> 
-      <button class="notification" nz-button nzShape="circle" (click)="UpdateUser()"><i nz-icon nzType="user" nzTheme="outline"></i></button>             
-    </nz-header>
+      <div nz-row>
+        <div nz-col [nzSpan]="6" [nzPush]="18">          
+          <nz-badge class="nz-button" nzDot (click)="Newnotification('success')"><i nz-icon nzType="notification"></i></nz-badge>
+          <a routerLink="/">
+            <nz-badge [nzCount]="1" style="margin: 0 20px;" >
+              <nz-avatar nzIcon="mail" [nzShape]="'square'" style="background-color:#1890ff;"></nz-avatar>
+            </nz-badge>
+          </a>
+          <a routerLink="/">
+            <nz-badge [nzCount]="1" style="margin: 0 20px;">
+              <nz-avatar nzIcon="wallet" [nzShape]="'square'" style="background-color:#87d068;"></nz-avatar>
+            </nz-badge>
+          </a>
+          <button nz-button nz-dropdown [nzDropdownMenu]="menu" [nzPlacement]="'bottomRight'" class="nz-button" nzShape="circle" nzSize="large" (click)="UpdateUser()"><i nz-icon nzType="user" nzTheme="outline" ></i></button>
+          <nz-dropdown-menu #menu="nzDropdownMenu">
+            <ul nz-menu>
+              <li nz-menu-item>Profil</li>
+              <li nz-menu-item>Se déconnecter</li>
+            </ul>
+          </nz-dropdown-menu>
+        </div> 
+      </div>   
+   </nz-header>
+    
     <nz-breadcrumb></nz-breadcrumb>
     <nz-content>
       <div class="inner-content">

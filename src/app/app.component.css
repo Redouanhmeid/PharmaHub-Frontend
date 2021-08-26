@@ -50,7 +50,9 @@ nz-footer {
   text-align: center;
 }
 
-.notification {
-  float:right;
-  margin: 16px 22px;
+.nz-button {
+  margin: 0 20px;
+  top: 2px;
+  font-size: 20px;
+  cursor: pointer;
 }
