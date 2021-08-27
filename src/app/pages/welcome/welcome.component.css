@@ -1,15 +1,69 @@
-.slider {
-    width: 50%;
-  }
   .slider-container {
     margin-bottom: 16px;
   }
   .grid-config {
     font-size: 14px;
-    background: #fcfcfc;
+    border: 1px solid #edf2f9;
     border-radius: 4px;
     padding: 5px;
+    margin: 10px 0;
   }
   p {
     margin: 0;
   }
+  nz-avatar{
+    font-size: 40px;
+    margin-right: 8px;
+    padding: auto;
+  }
+  .currentorders {
+    color: #3f87f5;
+    background: #3f87f51a;
+  }
+  .completedorders {
+    color: #52c41a;
+    background: #52c41a1a;
+  }
+  .orderstodo {
+    color: #ffc107;
+    background: #ffc1071a;
+  }
+  .taskstodo {
+    color: #ff4d4f;
+    background: #ff4d4f1a;
+  }
+  .typoh5{
+    padding: 15px 0;
+    margin: 0;
+  }
+
+.highcharts-figure, .highcharts-data-table table {
+    margin: 1em auto;
+}
+
+.highcharts-data-table table {
+	font-family: Verdana, sans-serif;
+	border-collapse: collapse;
+	border: 1px solid #EBEBEB;
+	margin: 10px auto;
+	text-align: center;
+}
+.highcharts-data-table caption {
+    padding: 1em 0;
+    font-size: 1.2em;
+    color: #555;
+}
+.highcharts-data-table th {
+	font-weight: 600;
+    padding: 0.5em;
+}
+.highcharts-data-table td, .highcharts-data-table th, .highcharts-data-table caption {
+    padding: 0.5em;
+}
+.highcharts-data-table thead tr, .highcharts-data-table tr:nth-child(even) {
+    background: #f8f8f8;
+}
+.highcharts-data-table tr:hover {
+    background: #f1f7ff;
+}
+
