@@ -106,6 +106,11 @@ import { PharmacienListComponent } from './pharmacien-list/pharmacien-list.compo
 import { CreatePharmacienComponent } from './create-pharmacien/create-pharmacien.component';
 import { UpdatePharmacienComponent } from './update-pharmacien/update-pharmacien.component';
 import { PharmacienDetailsComponent } from './pharmacien-details/pharmacien-details.component';
+import { StockDetailsComponent } from './stock-details/stock-details.component';
+import { StockListComponent } from './stock-list/stock-list.component';
+import { UpdateStockComponent } from './update-stock/update-stock.component';
+import { CreateStockComponent } from './create-stock/create-stock.component';
+import { ObjNgFor } from './stock-list/stockid.pipe';
 
 registerLocaleData(fr);
 
@@ -129,7 +134,12 @@ registerLocaleData(fr);
     UserListComponent,
     UserDetailsComponent,
     CreateUserComponent,
-    UpdateUserComponent
+    UpdateUserComponent,
+    StockDetailsComponent,
+    StockListComponent,
+    UpdateStockComponent,
+    CreateStockComponent,
+    ObjNgFor
   ],
   imports: [
     BrowserModule,

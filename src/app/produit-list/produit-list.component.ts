@@ -26,7 +26,7 @@ export class ProduitListComponent implements OnInit {
     this.produitService.getProduitsList().subscribe(data => {
       this.produits = data;
     })
- }
+  }
 
   search(): void {
     if(this.nom != ""){

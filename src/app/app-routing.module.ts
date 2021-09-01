@@ -3,6 +3,7 @@ import { Routes, RouterModule } from '@angular/router';
 import { CreatePharmacieComponent } from './create-pharmacie/create-pharmacie.component';
 import { CreatePharmacienComponent } from './create-pharmacien/create-pharmacien.component';
 import { CreateProduitComponent } from './create-produit/create-produit.component';
+import { CreateStockComponent } from './create-stock/create-stock.component';
 import { CreateUserComponent } from './create-user/create-user.component';
 import { LoginComponent } from './login/login.component';
 import { WelcomeComponent } from './pages/welcome/welcome.component';
@@ -12,9 +13,12 @@ import { PharmacienDetailsComponent } from './pharmacien-details/pharmacien-deta
 import { PharmacienListComponent } from './pharmacien-list/pharmacien-list.component';
 import { ProduitDetailsComponent } from './produit-details/produit-details.component';
 import { ProduitListComponent } from './produit-list/produit-list.component';
+import { StockDetailsComponent } from './stock-details/stock-details.component';
+import { StockListComponent } from './stock-list/stock-list.component';
 import { UpdatePharmacieComponent } from './update-pharmacie/update-pharmacie.component';
 import { UpdatePharmacienComponent } from './update-pharmacien/update-pharmacien.component';
 import { UpdateProduitComponent } from './update-produit/update-produit.component';
+import { UpdateStockComponent } from './update-stock/update-stock.component';
 import { UpdateUserComponent } from './update-user/update-user.component';
 import { UserDetailsComponent } from './user-details/user-details.component';
 import { UserListComponent } from './user-list/user-list.component';
@@ -38,6 +42,11 @@ const routes: Routes = [
   { path: 'create-pharmacien', component: CreatePharmacienComponent },
   { path: 'update-pharmacien/:id', component: UpdatePharmacienComponent },
   { path: 'pharmacien-details/:id', component: PharmacienDetailsComponent },
+
+  { path: 'stock', component: StockListComponent },
+  { path: 'create-stock', component: CreateStockComponent },
+  { path: 'update-stock/:id', component: UpdateStockComponent },
+  { path: 'stock-details', component: StockDetailsComponent },
   
   { path: 'users', component: UserListComponent },
   { path: 'create-user', component: CreateUserComponent },
