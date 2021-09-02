@@ -3,7 +3,7 @@ import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms'
 import { Router } from '@angular/router';
 
 import { NzFormTooltipIcon } from 'ng-zorro-antd/form';
-import { Pharmacien } from '../pharmacien';
+import { Pharmacien } from '../classes/pharmacien';
 import { PharmacienService } from '../services/pharmacien.service';
 
 @Component({
@@ -64,7 +64,7 @@ export class CreatePharmacienComponent implements OnInit {
     });
   }
   savePharmacien(){
-    this.pharmacienService.createPharmacie(this.pharmacien).subscribe( data =>{
+    this.pharmacienService.createPharmacien(this.pharmacien).subscribe( data =>{
       console.log(data);
       this.goToPharmacienList();
     },

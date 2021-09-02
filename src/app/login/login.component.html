@@ -8,14 +8,14 @@ nzTitle="S'identifier"
         <nz-form-item>
         <nz-form-control nzErrorTip="Veuillez saisir votre nom d'utilisateur ! ">
             <nz-input-group nzPrefixIcon="user">
-            <input type="text" nz-input formControlName="userName" placeholder="Nom d'utilisateur" />
+            <input type="text" nz-input formControlName="username" [(ngModel)]="user.nom_utilisateur" placeholder="Nom d'utilisateur"/>
             </nz-input-group>
         </nz-form-control>
         </nz-form-item>
         <nz-form-item>
         <nz-form-control nzErrorTip="Veuillez saisir votre mot de passe ! ">
             <nz-input-group nzPrefixIcon="lock">
-            <input type="password" nz-input formControlName="password" placeholder="Mot de passe " />
+            <input type="password" nz-input formControlName="password" [(ngModel)]="user.password" placeholder="Mot de passe"/>
             </nz-input-group>
         </nz-form-control>
         </nz-form-item>
@@ -29,7 +29,7 @@ nzTitle="S'identifier"
             <a class="login-form-forgot">Mot de passe oublié</a>
         </div>
         </div>
-        <button nz-button class="login-form-button login-form-margin" [nzType]="'primary'">Connexion</button>
+        <button nz-button class="login-form-button login-form-margin" [nzType]="'primary'" (click)="onLoggedIn()">Connexion</button>
         Ou
         <a>S'inscrire maintenant!</a>
     </form>

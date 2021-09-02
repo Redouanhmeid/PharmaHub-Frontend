@@ -1,1 +1,18 @@
-<p>pharmacien-details works!</p>
+
+<nz-page-header
+class="site-page-header"
+(nzBack)="onBack()"
+nzBackIcon
+nzTitle="Voir les détails du pharmacien"
+nzSubtitle={{pharmacien.nom_utilisateur}}
+>
+<nz-page-header-content>
+  <nz-descriptions  [nzColumn]="2">
+      <nz-descriptions-item nzTitle="Nom" [nzSpan]="1">{{pharmacien.nom}}</nz-descriptions-item>
+      <nz-descriptions-item nzTitle="Prénom" [nzSpan]="1">{{pharmacien.prenom}}</nz-descriptions-item>
+      <nz-descriptions-item nzTitle="Nom d'utilisateur" [nzSpan]="1">{{pharmacien.nom_utilisateur}}</nz-descriptions-item>
+      <nz-descriptions-item nzTitle="Tel." [nzSpan]="1">+212 {{pharmacien.telephone}}</nz-descriptions-item>  
+      <nz-descriptions-item nzTitle="Adresse Email" [nzSpan]="1"><a href="mailto:{{pharmacien.email}}">{{pharmacien.email}}</a></nz-descriptions-item>
+  </nz-descriptions>
+</nz-page-header-content>
+</nz-page-header>

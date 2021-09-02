@@ -24,9 +24,9 @@ import { UserDetailsComponent } from './user-details/user-details.component';
 import { UserListComponent } from './user-list/user-list.component';
 
 const routes: Routes = [
-  { path: '', pathMatch: 'full', redirectTo: '/dashboard' },
+  { path: '', pathMatch: 'full', redirectTo: '/welcome' },
   { path: 'login', component: LoginComponent },
-  { path: 'dashboard', component: WelcomeComponent },
+  { path: 'welcome', component: WelcomeComponent },
 
   { path: 'produits', component: ProduitListComponent },
   { path: 'create-produit', component: CreateProduitComponent },

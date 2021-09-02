@@ -1,1 +1,101 @@
-<p>update-pharmacien works!</p>
+<nz-page-header
+class="site-page-header"
+(nzBack)="onBack()"
+      nzBackIcon
+nzTitle="Modifier votre compte"
+>
+</nz-page-header> 
+
+<form nz-form [formGroup]="validateForm" (ngSubmit)="submitForm()">
+    <nz-form-item>
+        <nz-form-label [nzSm]="6" [nzXs]="24" nzFor="firstname" nzRequired>
+          <span>Nom</span>
+        </nz-form-label>
+        <nz-form-control [nzSm]="14" [nzXs]="24" nzErrorTip="Veuillez saisir votre Nom!">
+          <input nz-input id="firstname" formControlName="firstname" [(ngModel)] = "pharmacien.nom" placeholder="pharmacien.nom"/>
+        </nz-form-control>
+    </nz-form-item>
+
+    <nz-form-item>
+        <nz-form-label [nzSm]="6" [nzXs]="24" nzFor="lastname" nzRequired>
+          <span>Prénom</span>
+        </nz-form-label>
+        <nz-form-control [nzSm]="14" [nzXs]="24" nzErrorTip="Veuillez saisir votre Prénom!">
+          <input nz-input id="lastname" formControlName="lastname" [(ngModel)] = "pharmacien.prenom"/>
+        </nz-form-control>
+    </nz-form-item>
+
+    <nz-form-item>
+        <nz-form-label
+          [nzSm]="6"
+          [nzXs]="24"
+          nzFor="nickname"
+          nzRequired
+          nzTooltipTitle="Vous l'utiliserez pour le formulaire de connexion"
+        >
+          <span>Nom d'utilisateur</span>
+        </nz-form-label>
+        <nz-form-control [nzSm]="14" [nzXs]="24" nzErrorTip="Veuillez saisir votre Nom d'utilisateur!">
+          <input nz-input id="nickname" formControlName="nickname" [(ngModel)] = "pharmacien.nom_utilisateur"/>
+        </nz-form-control>
+      </nz-form-item>
+
+    <nz-form-item>
+      <nz-form-label [nzSm]="6" [nzXs]="24" nzRequired nzFor="email">E-mail</nz-form-label>
+      <nz-form-control [nzSm]="14" [nzXs]="24" nzErrorTip="L'entrée n'est pas valide E-mail !">
+        <input nz-input formControlName="email" id="email" [(ngModel)] = "pharmacien.email"/>
+      </nz-form-control>
+    </nz-form-item>
+
+    <nz-form-item>
+        <nz-form-label [nzSm]="6" [nzXs]="24" nzFor="phoneNumber" nzRequired>Numéro de téléphone</nz-form-label>
+        <nz-form-control
+          [nzSm]="14"
+          [nzXs]="24"
+          [nzValidateStatus]="validateForm.controls['phoneNumber']"
+          nzErrorTip="Veuillez saisir votre numéro de téléphone!"
+        >
+          <nz-input-group [nzAddOnBefore]="addOnBeforeTemplate">
+            <ng-template #addOnBeforeTemplate>
+              <nz-select formControlName="phoneNumberPrefix" class="phone-select">
+                <nz-option nzLabel="+212" nzValue="+212"></nz-option>
+              </nz-select>
+            </ng-template>
+            <input formControlName="phoneNumber" id="'phoneNumber'" nz-input [(ngModel)] = "pharmacien.telephone"/>
+          </nz-input-group>
+        </nz-form-control>
+    </nz-form-item>
+
+    <nz-form-item>
+      <nz-form-label [nzSm]="6" [nzXs]="24" nzFor="password" nzRequired>Mot de passe</nz-form-label>
+      <nz-form-control [nzSm]="14" [nzXs]="24" nzErrorTip="Veuillez saisir votre mot de passe !">
+        <input
+          nz-input
+          type="password"
+          id="password"
+          formControlName="password"
+          (ngModelChange)="updateConfirmValidator()"
+          [(ngModel)] = "pharmacien.password"
+        />
+      </nz-form-control>
+    </nz-form-item>
+
+    <nz-form-item>
+      <nz-form-label [nzSm]="6" [nzXs]="24" nzFor="checkPassword" nzRequired>Confirmer le mot de passe</nz-form-label>
+      <nz-form-control [nzSm]="14" [nzXs]="24" [nzErrorTip]="errorTpl">
+        <input nz-input type="password" formControlName="checkPassword" id="checkPassword" />
+        <ng-template #errorTpl let-control>
+          <ng-container *ngIf="control.hasError('required')">Veuillez confirmer votre mot de passe !</ng-container>
+          <ng-container *ngIf="control.hasError('confirm')">
+            Deux mots de passe que vous saisissez sont incohérents !
+          </ng-container>
+        </ng-template>
+      </nz-form-control>
+    </nz-form-item>
+
+    <nz-form-item nz-row class="register-area">
+      <nz-form-control [nzSpan]="5" [nzOffset]="15">
+        <button nz-button nzBlock nzType="primary">Mettre à jour</button>
+      </nz-form-control>
+    </nz-form-item>
+  </form>

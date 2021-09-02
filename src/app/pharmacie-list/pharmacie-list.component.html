@@ -11,9 +11,9 @@
      <tr>
          <th>Nom</th>
          <th>Tèl.</th>
-         <th>adresse</th>
-         <th>ville</th>
-         <th>Actions</th>
+         <th>Adresse</th>
+         <th>Ville</th>
+         <th>Voire plus</th>
      </tr>
     </thead>
     <tbody>
@@ -24,8 +24,9 @@
             <td>{{ pharmacie.ville }}</td>
             <td>
                 <button nz-button nzGhost nzType="default" nzShape="circle" (click) = "pharmacieDetails(pharmacie.ice)"><i nz-icon nzType="eye" nzTheme="twotone"></i></button>
-                <button nz-button nzType="default" nzShape="circle" (click) = "updatePharmacie(pharmacie.ice)" style="margin-left: 10px"><i nz-icon nzType="setting" nzTheme="twotone"></i></button>
+                <button hidden nz-button nzType="default" nzShape="circle" (click) = "updatePharmacie(pharmacie.ice)" style="margin-left: 10px"><i nz-icon nzType="setting" nzTheme="twotone"></i></button>
                 <button
+                hidden
                 nz-button
                 nzDanger
                 nzShape="circle"

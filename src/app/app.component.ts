@@ -1,6 +1,7 @@
 import { Component, TemplateRef, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
 import { NzNotificationService } from 'ng-zorro-antd/notification';
+import { AuthService } from './services/auth.service';
 
 @Component({
   selector: 'app-root',
@@ -11,7 +12,7 @@ export class AppComponent {
   isCollapsed = false;
   @ViewChild(TemplateRef, { static: false }) template?: TemplateRef<{}>;
 
-  constructor(private notification: NzNotificationService,private router: Router) {}
+  constructor(private notification: NzNotificationService, public authService : AuthService, private router: Router) {}
   Newnotification(type: string): void {
     this.notification.create(
       type,
@@ -20,10 +21,9 @@ export class AppComponent {
     );
   }
 
-  UpdateUser(){
-    this.router.navigate(['update-user']);
+  onLogOut(){
+    this.authService.logout();
   }
-
 }
 
 

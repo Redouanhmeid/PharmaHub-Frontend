@@ -1,4 +1,4 @@
-import { Stock } from './../stock';
+import { Stock } from '../classes/stock';
 import { JsonPipe } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';

@@ -11,18 +11,15 @@
         <ul>
           <li nz-menu-item nzMatchRouter><a routerLink="/produits">Médicaments</a></li>
           <li nz-menu-item nzMatchRouter><a routerLink="/pharmacies">Pharmacies</a></li>          
-          <li nz-menu-item nzMatchRouter><a routerLink="/create-pharmacie">Créer votre pharmacie</a></li>
+          <li *ngIf="authService.isPharmacien()" nz-menu-item nzMatchRouter><a routerLink="/stock-details">Stock</a></li>
         </ul>
       </li>
-      <li nz-submenu nzTitle="Espace de compte" nzIcon="login">
+      <li *ngIf="!authService.isloggedIn" nz-submenu nzTitle="Espace de compte" nzIcon="lock">
         <ul>
-          <li nz-menu-item nzMatchRouter><a routerLink="/login">Connexion</a></li>
-          <li nz-menu-item nzMatchRouter><a routerLink="/create-pharmacien">S'inscrire</a></li>
+          <li nz-menu-item nzMatchRouter ><a routerLink="/login"><i nz-icon nzType="login" nzTheme="outline"></i> Connexion</a></li>
+          <li nz-menu-item nzMatchRouter><a routerLink="/pharmacien-details/1"><i nz-icon nzType="user" nzTheme="outline"></i> Profile</a></li>
+          <li nz-menu-item nzMatchRouter><a routerLink="/create-pharmacien"><i nz-icon nzType="unlock" nzTheme="outline"></i> S'inscrire</a></li>
         </ul>
-      </li>
-      <li nz-menu-item>
-        <i nz-icon nzType="file"></i>
-        <span>File</span>
       </li>
     </ul>
   </nz-sider>
@@ -30,23 +27,36 @@
     
     <nz-header>
       <div nz-row>
-        <div nz-col [nzSpan]="6" [nzPush]="18">          
-          <nz-badge class="nz-button" nzDot (click)="Newnotification('success')"><i nz-icon nzType="notification"></i></nz-badge>
+        <div nz-col [nzSpan]="1" [nzPush]="15">          
+          <nz-badge *ngIf="authService.isPharmacien()" class="nz-button" nzDot (click)="Newnotification('success')"><i nz-icon nzType="notification"></i></nz-badge>
+        </div>
+        <div nz-col [nzSpan]="1" [nzPush]="16">    
           <a routerLink="/">
-            <nz-badge [nzCount]="1" style="margin: 0 20px;" >
+            <nz-badge *ngIf="authService.isPharmacien()" [nzCount]="1" style="margin: 0 20px;" >
               <nz-avatar nzIcon="mail" [nzShape]="'square'" style="background-color:#1890ff;"></nz-avatar>
             </nz-badge>
           </a>
+        </div>
+        <div nz-col [nzSpan]="1" [nzPush]="17">  
           <a routerLink="/">
             <nz-badge [nzCount]="1" style="margin: 0 20px;">
               <nz-avatar nzIcon="wallet" [nzShape]="'square'" style="background-color:#87d068;"></nz-avatar>
             </nz-badge>
           </a>
-          <button nz-button nz-dropdown [nzDropdownMenu]="menu" [nzPlacement]="'bottomRight'" class="nz-button" nzShape="circle" nzSize="large" (click)="UpdateUser()"><i nz-icon nzType="user" nzTheme="outline" ></i></button>
+        </div>
+        <div nz-col [nzSpan]="3" [nzPush]="18">  
+          <!-- <button nz-button class="nz-button" nzShape="circle" nzSize="large" (click)="UpdateUser()"> -->
+            <nz-avatar nz-dropdown [nzDropdownMenu]="menu" [nzPlacement]="'bottomRight'" [nzShape]="'circle'" [nzSize]="40" [nzIcon]="'user'">
+              <!-- <img src="assets/images/avatars/thumb-.jpg" class="ng-star-inserted"> -->
+            </nz-avatar>
+          <!-- </button> -->
           <nz-dropdown-menu #menu="nzDropdownMenu">
-            <ul nz-menu>
-              <li nz-menu-item>Profil</li>
-              <li nz-menu-item>Se déconnecter</li>
+            <ul nz-menu nzBordered nzSize="large">
+              <li class="profile" nzTitle="SubTitle" *ngIf="authService.isloggedIn" nz-menu-item><span title><i nz-icon nzType="home" nzTheme="outline"></i> Bonjour {{ authService.loggedUser }}</span></li>
+              <li class="profile" *ngIf="authService.isloggedIn" nz-menu-item><i nz-icon nzType="user" nzTheme="outline"></i> Profil ></li>
+              <li class="profile" *ngIf="authService.isloggedIn" nz-menu-item  routerLink="/update-user" ><i nz-icon nzType="setting" nzTheme="outline"></i> Paramètres</li>
+              <li class="profile" *ngIf="!authService.isloggedIn" nz-menu-item routerLink="/login" ><i nz-icon nzType="login" nzTheme="outline"></i> Se connecter</li>
+              <li class="profile" *ngIf="authService.isloggedIn" nz-menu-item (click)="onLogOut()" ><i nz-icon nzType="logout" nzTheme="outline"></i> Se déconnecter</li>
             </ul>
           </nz-dropdown-menu>
         </div> 

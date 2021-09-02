@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { NzMessageService } from 'ng-zorro-antd/message';
-import { Pharmacie } from '../pharmacie';
-import { PharmacieService } from '../pharmacie.service';
+import { Pharmacie } from '../classes/pharmacie';
+import { AuthService } from '../services/auth.service';
+import { PharmacieService } from '../services/pharmacie.service';
 
 @Component({
   selector: 'app-pharmacie-list',
@@ -13,6 +14,7 @@ export class PharmacieListComponent implements OnInit {
   pharmacies: Pharmacie[] = [];
   libelle: string;
   constructor(private pharmacieService: PharmacieService,
+    public authService : AuthService,
     private router: Router,
     private nzMessageService: NzMessageService) { }
 

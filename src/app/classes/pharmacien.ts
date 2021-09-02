@@ -6,4 +6,5 @@ export class Pharmacien {
     telephone: number;
     email: string;
     password: string;
+    role : string;
 }

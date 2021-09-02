@@ -1,7 +1,7 @@
+import { Pharmacien } from './../classes/pharmacien';
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http'
 import { Observable } from 'rxjs';
-import { Pharmacien } from '../pharmacien';
 
 @Injectable({
   providedIn: 'root'
@@ -9,19 +9,19 @@ import { Pharmacien } from '../pharmacien';
 export class PharmacienService {
   private baseURL = "http://localhost:8080/api/v1/pharmaciens";
   constructor(private HttpClient: HttpClient) { }
-  getPharmaciesList() : Observable<Pharmacien[]>{
+  getPharmaciensList() : Observable<Pharmacien[]>{
     return this.HttpClient.get<Pharmacien[]>(this.baseURL);
   }
-  createPharmacie(pharmacie: Pharmacien): Observable<Object>{
-    return this.HttpClient.post(this.baseURL, pharmacie);
+  createPharmacien(pharmacien: Pharmacien): Observable<Object>{
+    return this.HttpClient.post(this.baseURL, pharmacien);
   }
-  updatePharmacie(ice: number, pharmacie: Pharmacien): Observable<Object>{
-    return this.HttpClient.put(this.baseURL +'/'+ ice, pharmacie);
+  updatePharmacien(id: number, pharmacien: Pharmacien): Observable<Object>{
+    return this.HttpClient.put(this.baseURL +'/'+ id, pharmacien);
   }
-  getPharmacieByICE(ice: number): Observable<Pharmacien>{
-    return this.HttpClient.get<Pharmacien>(this.baseURL +'/'+ ice);
+  getPharmacienByID(id: number): Observable<Pharmacien>{
+    return this.HttpClient.get<Pharmacien>(this.baseURL +'/'+ id);
   }
-  deletePharmacie(ice: number): Observable<Object>{
-    return this.HttpClient.delete(this.baseURL +'/'+ ice);
+  deletePharmacien(id: number): Observable<Object>{
+    return this.HttpClient.delete(this.baseURL +'/'+ id);
   }
 }
