@@ -6,5 +6,5 @@ export class User {
     telephone: number;
     email: string;
     password: string;
-    roles : string[];
+    role : string;
 }

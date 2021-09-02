@@ -2,7 +2,7 @@
 class="site-page-header"
 nzTitle="S'identifier"
 >
-</nz-page-header> 
+</nz-page-header>
 <div class="login-div">
     <form nz-form [formGroup]="validateForm" class="login-form" (ngSubmit)="submitForm()">
         <nz-form-item>
@@ -29,8 +29,52 @@ nzTitle="S'identifier"
             <a class="login-form-forgot">Mot de passe oublié</a>
         </div>
         </div>
-        <button nz-button class="login-form-button login-form-margin" [nzType]="'primary'" (click)="onLoggedIn()">Connexion</button>
+        <button nz-button class="login-form-button login-form-margin" [nzType]="'primary'" (click)="onLoggedInC()">Connexion</button>
         Ou
         <a>S'inscrire maintenant!</a>
+        <br /><br />
+        <button nz-button class="login-form-button login-form-margin"  nzType="primary" (click)="open()"><i nz-icon nzType="medicine-box" nzTheme="outline"></i>êtes-vous un pharmacien ?</button>
     </form>
 </div>
+  <nz-drawer
+    [nzClosable]="false"
+    [nzVisible]="visible"
+    [nzPlacement]="placement"
+    nzTitle="S'identifier"
+    (nzOnClose)="close()"
+    [nzHeight]=500
+  >
+    <ng-container *nzDrawerContent>      
+        <div class="login-div">
+            <form nz-form [formGroup]="validateForm" class="login-form" (ngSubmit)="submitForm()">
+                <nz-form-item>
+                <nz-form-control nzErrorTip="Veuillez saisir votre nom d'utilisateur ! ">
+                    <nz-input-group nzPrefixIcon="user">
+                    <input type="text" nz-input formControlName="username" [(ngModel)]="user.nom_utilisateur" placeholder="Nom d'utilisateur"/>
+                    </nz-input-group>
+                </nz-form-control>
+                </nz-form-item>
+                <nz-form-item>
+                <nz-form-control nzErrorTip="Veuillez saisir votre mot de passe ! ">
+                    <nz-input-group nzPrefixIcon="lock">
+                    <input type="password" nz-input formControlName="password" [(ngModel)]="user.password" placeholder="Mot de passe"/>
+                    </nz-input-group>
+                </nz-form-control>
+                </nz-form-item>
+                <div nz-row class="login-form-margin">
+                <div nz-col [nzSpan]="12">
+                    <label nz-checkbox formControlName="remember">
+                    <span>Se souvenir de moi</span>
+                    </label>
+                </div>
+                <div nz-col [nzSpan]="12">
+                    <a class="login-form-forgot">Mot de passe oublié</a>
+                </div>
+                </div>
+                <button nz-button class="login-form-button login-form-margin" [nzType]="'primary'" (click)="onLoggedInP()">Connexion</button>
+                Ou
+                <a>S'inscrire maintenant!</a><br /><br /><br /><br />
+            </form>
+        </div>
+    </ng-container>
+  </nz-drawer>

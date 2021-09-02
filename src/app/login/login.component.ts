@@ -5,6 +5,7 @@ import { Router } from '@angular/router';
 import { AuthService } from '../services/auth.service';
 import { NzMessageService } from 'ng-zorro-antd/message';
 import { Pharmacien } from '../classes/pharmacien';
+import { NzDrawerPlacement } from 'ng-zorro-antd/drawer';
 
 @Component({
   selector: 'app-login',
@@ -12,6 +13,17 @@ import { Pharmacien } from '../classes/pharmacien';
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent implements OnInit {
+  visible = false;
+  placement: NzDrawerPlacement = 'top';
+  open(): void {
+    this.visible = true;
+  }
+
+  close(): void {
+    this.visible = false;
+  }
+
+
   user = new Pharmacien();
   validateForm!: FormGroup;
 
@@ -34,13 +46,24 @@ export class LoginComponent implements OnInit {
     });
     
   }
-  onLoggedIn(){
+  onLoggedInP(){
     console.log(this.user);
-    let isValidUser: Boolean = this.authService.SignIn(this.user);
-    console.log("valid user "+isValidUser);
+    let isValidUser: Boolean = this.authService.SignInP(this.user);
+    console.log("valid Pharmacien "+isValidUser);
     if (isValidUser)
     
       this.router.navigate(['/']);     
+    
+      else
+      this.createMessage('error');
+  }
+  onLoggedInC(){
+    console.log(this.user);
+    let isValidUser: Boolean = this.authService.SignInC(this.user);
+    console.log("valid Client "+isValidUser);
+    if (isValidUser)
+    
+      this.router.navigate(['/produits']);     
     
       else
       this.createMessage('error');
