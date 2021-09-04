@@ -23,8 +23,7 @@ export class LoginComponent implements OnInit {
     this.visible = false;
   }
 
-
-  user = new Pharmacien();
+  user = new User();
   validateForm!: FormGroup;
 
   submitForm(): void {
@@ -44,12 +43,9 @@ export class LoginComponent implements OnInit {
       password: [null, [Validators.required]],
       remember: [true]
     });
-    
   }
   onLoggedInP(){
-    console.log(this.user);
     let isValidUser: Boolean = this.authService.SignInP(this.user);
-    console.log("valid Pharmacien "+isValidUser);
     if (isValidUser)
     
       this.router.navigate(['/']);     
@@ -58,12 +54,10 @@ export class LoginComponent implements OnInit {
       this.createMessage('error');
   }
   onLoggedInC(){
-    console.log(this.user);
     let isValidUser: Boolean = this.authService.SignInC(this.user);
-    console.log("valid Client "+isValidUser);
     if (isValidUser)
     
-      this.router.navigate(['/produits']);     
+      this.router.navigate(['/produits']);
     
       else
       this.createMessage('error');

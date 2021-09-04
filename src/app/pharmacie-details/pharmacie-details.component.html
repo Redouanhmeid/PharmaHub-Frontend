@@ -13,7 +13,8 @@
             <nz-descriptions-item nzTitle="Adresse E-mail" [nzSpan]="1"><a href="mailto:{{pharmacie.email}}">{{pharmacie.email}}</a></nz-descriptions-item>
             <nz-descriptions-item nzTitle="Adresse." [nzSpan]="1">{{pharmacie.adresse}}</nz-descriptions-item>
             <nz-descriptions-item nzTitle="Tel." [nzSpan]="1">+212 {{pharmacie.telephone}}</nz-descriptions-item>
-            <nz-descriptions-item nzTitle="Ville." [nzSpan]="1">{{pharmacie.ville}}</nz-descriptions-item>
+            <nz-descriptions-item nzTitle="Ville" [nzSpan]="1">{{pharmacie.ville}}</nz-descriptions-item>
+            <nz-descriptions-item nzTitle="Propriétaire" [nzSpan]="1">{{pharmacie.pharmacienId.nom}} {{pharmacie.pharmacienId.prenom}}</nz-descriptions-item>
         </nz-descriptions>
       </nz-page-header-content>
 </nz-page-header>

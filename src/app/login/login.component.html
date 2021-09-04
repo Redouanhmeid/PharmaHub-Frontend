@@ -31,10 +31,11 @@ nzTitle="S'identifier"
         </div>
         <button nz-button class="login-form-button login-form-margin" [nzType]="'primary'" (click)="onLoggedInC()">Connexion</button>
         Ou
-        <a>S'inscrire maintenant!</a>
+        <a routerLink='/create-user'>S'inscrire maintenant!</a>
         <br /><br />
-        <button nz-button class="login-form-button login-form-margin"  nzType="primary" (click)="open()"><i nz-icon nzType="medicine-box" nzTheme="outline"></i>êtes-vous un pharmacien ?</button>
+        
     </form>
+    <button nz-button class="login-form-button2 login-form-margin" [nzType]="'primary'" (click)="open()"><i nz-icon nzType="medicine-box" nzTheme="outline"></i>êtes-vous un pharmacien ?</button>
 </div>
   <nz-drawer
     [nzClosable]="false"
@@ -73,7 +74,7 @@ nzTitle="S'identifier"
                 </div>
                 <button nz-button class="login-form-button login-form-margin" [nzType]="'primary'" (click)="onLoggedInP()">Connexion</button>
                 Ou
-                <a>S'inscrire maintenant!</a><br /><br /><br /><br />
+                <a routerLink='/create-pharmacien'>S'inscrire maintenant!</a><br /><br /><br /><br />
             </form>
         </div>
     </ng-container>

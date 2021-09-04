@@ -14,11 +14,13 @@
           <li *ngIf="authService.isPharmacien()" nz-menu-item nzMatchRouter><a routerLink="/stock-details">Stock</a></li>
         </ul>
       </li>
-      <li *ngIf="!authService.isloggedIn" nz-submenu nzTitle="Espace de compte" nzIcon="lock">
+      <li nz-submenu nzTitle="Espace de compte" nzIcon="lock">
         <ul>
-          <li nz-menu-item nzMatchRouter ><a routerLink="/login"><i nz-icon nzType="login" nzTheme="outline"></i> Connexion</a></li>
-          <li nz-menu-item nzMatchRouter><a routerLink="/pharmacien-details/1"><i nz-icon nzType="user" nzTheme="outline"></i> Profile</a></li>
-          <li nz-menu-item nzMatchRouter><a routerLink="/create-pharmacien"><i nz-icon nzType="unlock" nzTheme="outline"></i> S'inscrire</a></li>
+          <li *ngIf="!authService.isloggedIn" nz-menu-item nzMatchRouter><a routerLink="/login"><i nz-icon nzType="login" nzTheme="outline"></i> Connexion</a></li>
+          <li *ngIf="authService.isloggedIn" nz-menu-item nzMatchRouter><a routerLink="/user-details/{{loggedId}}"><i nz-icon nzType="user" nzTheme="outline"></i> Profile</a></li>
+          <li *ngIf="authService.isloggedIn" nz-menu-item nzMatchRouter><a routerLink="/update-user/1"><i nz-icon nzType="setting" nzTheme="outline"></i> Paramètres</a></li>
+          <li *ngIf="!authService.isloggedIn" nz-menu-item nzMatchRouter><a routerLink="/create-user"><i nz-icon nzType="unlock" nzTheme="outline"></i> S'inscrire</a></li>
+          <li *ngIf="authService.isloggedIn" nz-menu-item nzMatchRouter><a (click)="onLogOut()"><i nz-icon nzType="logout" nzTheme="outline"></i> Se déconnecter</a></li>
         </ul>
       </li>
     </ul>
@@ -53,8 +55,8 @@
           <nz-dropdown-menu #menu="nzDropdownMenu">
             <ul nz-menu nzBordered nzSize="large">
               <li class="profile" nzTitle="SubTitle" *ngIf="authService.isloggedIn" nz-menu-item><span title><i nz-icon nzType="home" nzTheme="outline"></i> Bonjour {{ authService.loggedUser }}</span></li>
-              <li class="profile" *ngIf="authService.isloggedIn" nz-menu-item><i nz-icon nzType="user" nzTheme="outline"></i> Profil ></li>
-              <li class="profile" *ngIf="authService.isloggedIn" nz-menu-item  routerLink="/update-user" ><i nz-icon nzType="setting" nzTheme="outline"></i> Paramètres</li>
+              <li class="profile" *ngIf="authService.isloggedIn" nz-menu-item><i nz-icon nzType="user" nzTheme="outline"></i> Profil </li>
+              <li class="profile" *ngIf="authService.isloggedIn" nz-menu-item routerLink="/update-user" ><i nz-icon nzType="setting" nzTheme="outline"></i> Paramètres</li>
               <li class="profile" *ngIf="!authService.isloggedIn" nz-menu-item routerLink="/login" ><i nz-icon nzType="login" nzTheme="outline"></i> Se connecter</li>
               <li class="profile" *ngIf="authService.isloggedIn" nz-menu-item (click)="onLogOut()" ><i nz-icon nzType="logout" nzTheme="outline"></i> Se déconnecter</li>
             </ul>

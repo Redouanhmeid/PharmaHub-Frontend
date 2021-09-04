@@ -1,48 +1,48 @@
-<nz-table 
-#Stock
- nzShowSizeChanger
- [nzData]="stock"
+<!-- <nz-table 
+#Stocks
+nzShowSizeChanger
+ [nzData]="stocks"
  [nzScroll]="{ y: '450px' }"
 >
   <thead>
     <tr>
-      <th nzWidth="20%">code</th>
-      <th nzWidth="50%">ice</th>
-      <th nzWidth="10%">Quantity</th>
+      <th nzWidth="20%">Nom</th>
+      <th nzWidth="50%">Quantité</th>
       <th nzWidth="20%"></th>
     </tr>
   </thead>
   <tbody>
-    <tr *ngFor="let stock of Stock.data">
-      <!-- <td>{{ stock['id'] | json}}</td> -->
-      <td></td>
-      <td>{{ stock.quantity }}</td>
-      <td><button nz-button nzType="primary"><i nz-icon nzType="plus"></i></button></td>
+    <tr *ngFor="let stock of Stocks.data">
+      <td >{{stock.id}}</td>
+      <td>{{stock.quantity}}</td>
+      <td><button nz-button nzType="primary"><i nz-icon nzType="shopping"></i>Commander</button></td>
     </tr>
   </tbody> 
-</nz-table>
+</nz-table> -->
 
-
-
-<nz-table 
-#Stock
- nzShowSizeChanger
- [nzData]="stock"
- [nzScroll]="{ y: '450px' }"
->
-  <thead>
-    <tr>
-      <th nzWidth="20%">code</th>
-      <th nzWidth="10%">Quantity</th>
-      <th nzWidth="20%"></th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr *ngFor="let s of stock">      
-      <td *ngFor="let i of listOfID2">{{ i.code }} {{i.ice }}</td>
-      <td>{{ s.quantity }}</td>
-      
-      <td><button nz-button nzType="primary"><i nz-icon nzType="plus"></i></button></td>
-    </tr>
-  </tbody> 
-</nz-table>
+<nz-table #basicTable>
+    <thead>
+      <tr>
+        <th>Médicament</th>
+        <th>Quantité</th>
+        <th></th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>APURONE</td>
+        <td>0</td>
+        <td><button nz-button nzType="primary"><i nz-icon nzType="shopping"></i>Commander</button></td>
+      </tr>
+      <tr>
+        <td>METHOTREXATE BIODIM</td>
+        <td>0</td>
+        <td><button nz-button nzType="primary"><i nz-icon nzType="shopping"></i>Commander</button></td>
+      </tr>
+      <tr>
+        <td>ERYTHROCINE</td>
+        <td>7</td>
+        <td><button nz-button nzType="primary"><i nz-icon nzType="shopping"></i>Commander</button></td>
+      </tr>
+    </tbody>
+  </nz-table>

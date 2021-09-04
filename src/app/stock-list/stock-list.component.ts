@@ -1,14 +1,8 @@
-import { Stock } from '../classes/stock';
-import { JsonPipe } from '@angular/common';
+import { Stock } from './../classes/stock';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { StockService } from '../services/stock.service';
-
-
-interface ID {
-  code: number;
-  ice: number;
-}
+import { HttpClient } from '@angular/common/http'
 
 @Component({
   selector: 'app-stock-list',
@@ -16,31 +10,21 @@ interface ID {
   styleUrls: ['./stock-list.component.css']
 })
 export class StockListComponent implements OnInit {
-  
-  listOfID: ID[] = [];
-  stock: Stock[] = [];
-  listOfID2: any;
-  
-  
+  stocks: Stock[] = [];
+ 
+    
   constructor(private stockService: StockService,
+    private HttpClient: HttpClient,
     private router: Router) { }
 
   ngOnInit(): void {
-    this.getStock();
-    
+      this.getStock();
   }
-
   private getStock(){
     this.stockService.getStockList().subscribe(data => {
-      this.stock = data;
-
-      console.log(this.stock[0]['id']);
-      for (let i = 0; i < 2; ++i) {
-        this.listOfID2 = this.stock[0]['id'];
-      }     
-      console.log(this.listOfID2);  
-      console.log(this.stock[0]['quantity']); 
-    });
-
+      this.stocks = data;
+      console.log(this.stocks)
+    })
   }
+  
 }

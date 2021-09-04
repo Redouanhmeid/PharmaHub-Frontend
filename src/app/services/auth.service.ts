@@ -13,10 +13,13 @@ export class AuthService {
   clients : User[] = [];
   
   public loggedUser:string;
+  public loggedId: number;
   public isloggedIn: Boolean = false;
   public roleP:string;
   public roleC:string;
-
+  getLoggedId(){
+    return this.loggedId;
+  }
 
   getPharmaciens(){
     this.pharmacienService.getPharmaciensList().subscribe(data => {
@@ -26,7 +29,6 @@ export class AuthService {
   getClients(){
     this.userService.getClientsList().subscribe(data => {
       this.clients = data;
-      console.log(this.clients);
     })
   }
   constructor(private pharmacienService: PharmacienService, private userService: UserService, private router: Router) { }
@@ -36,9 +38,11 @@ export class AuthService {
     this.pharmaciens.forEach((curUser) => {
       if(user.nom_utilisateur=== curUser.nom_utilisateur && user.password==curUser.password) {
         validUser = true;
+        this.loggedId = curUser.id;
         this.loggedUser = curUser.nom_utilisateur;
         this.isloggedIn = true;
         this.roleP = curUser.role;
+        localStorage.setItem('loggedId',String(this.loggedId));
         localStorage.setItem('loggedUser',this.loggedUser);
         localStorage.setItem('loggedRoleUser',this.roleP);
         localStorage.setItem('isloggedIn',String(this.isloggedIn));
@@ -50,12 +54,13 @@ export class AuthService {
     this.getClients();
     let validUser: Boolean = false;
     this.clients.forEach((clt) => {
-      console.log(this.clients);
       if(user.nom_utilisateur=== clt.nom_utilisateur && user.password==clt.password) {
         validUser = true;
+        this.loggedId = clt.id;
         this.loggedUser = clt.nom_utilisateur;
         this.isloggedIn = true;
         this.roleP = clt.role;
+        localStorage.setItem('loggedId',String(this.loggedId));
         localStorage.setItem('loggedUser',this.loggedUser);
         localStorage.setItem('loggedRoleUser',this.roleP);
         localStorage.setItem('isloggedIn',String(this.isloggedIn));
@@ -76,10 +81,12 @@ export class AuthService {
   }
 
   logout() { 
+    this.loggedId = 0;
     this.isloggedIn= false;
     this.loggedUser = 'undefined';
     this.roleP =  'undefined';
     this.roleC =  'undefined';
+    localStorage.removeItem('loggedId');
     localStorage.removeItem('loggedUser');
     localStorage.removeItem('loggedRoleUser');
     localStorage.setItem('isloggedIn',String(this.isloggedIn));

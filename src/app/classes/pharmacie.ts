@@ -1,3 +1,4 @@
+import { Pharmacien } from './pharmacien';
 export class Pharmacie {
     ice: number;
     libelle: string;
@@ -5,4 +6,5 @@ export class Pharmacie {
     email: string;
     ville: string;
     adresse: string;
+    pharmacienId: Pharmacien;
 }

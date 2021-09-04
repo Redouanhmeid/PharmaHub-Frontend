@@ -12,6 +12,7 @@
   .login-form-margin {
     margin-bottom: 16px;
   }
+  
 
   .login-form-forgot {
     float: right;
@@ -19,4 +20,7 @@
 
   .login-form-button {
     width: 100%;
+  }
+  .login-form-button2 {
+    width: 49%;
   }

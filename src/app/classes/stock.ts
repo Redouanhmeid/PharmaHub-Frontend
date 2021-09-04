@@ -1,4 +1,7 @@
 export class Stock {
     id : Object[];
-    quantity : number;  
+    quantity : number;
+    ice:number;
+    code:number;
+    
 }
